@@ -71,7 +71,7 @@ curl -L -o "$filename" "$downloadUrl"
 cd ..
 
 # List contents of 'dist' (using ls, assuming it's an alias or available)
-ls -lhdist
+ls -lh dist
 
 # Extract the downloaded zip files
 unzip -q "dist/Prodkeys.NET_v21-0-0.zip" -d "ProdKeys_21"
@@ -100,10 +100,10 @@ sleep 10
 kill $pid
 
 # List contents of 'user'
-ls -lhuser
+ls -lh user
 
-ls -lh../ProdKeys_21
-# ls -lh../Firmware_21
+ls -lh ../ProdKeys_21
+# ls -lh ../Firmware_21
 
 # Copy files to their respective directories
 cp -r ../ProdKeys_21/*.keys ./user/keys
@@ -136,6 +136,6 @@ rm ../dist/$filename
 zip -r -q ../dist/$filename .
 
 # List contents of '../dist' from the current directory
-ls -lh../dist
+ls -lh ../dist
 
 echo "tag=$latestTag" >> $GITHUB_OUTPUT
