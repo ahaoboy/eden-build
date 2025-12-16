@@ -7,7 +7,7 @@ repo='Releases'
 DEFAULT_VERSION='21.0.0'
 
 # Array of versions to download
-declare -a VERSIONS=('19.0.1' '20.5.0' '21.0.0')
+declare -a VERSIONS=('21.0.0')
 
 # Create the 'dist' directory
 mkdir -p dist
@@ -18,18 +18,18 @@ cd dist
 # Download zip files for each version
 for version in "${VERSIONS[@]}"; do
     case $version in
-        19.0.1)
-            prodkeys_url="https://files.prodkeys.net/ProdKeys.net-v19.0.1.zip"
-            firmware_url="https://github.com/THZoria/NX_Firmware/releases/download/19.0.1/Firmware.19.0.1.zip"
-            prodkeys_file="ProdKeys.net-v19.0.1.zip"
-            firmware_file="Firmware.19.0.1.zip"
-            ;;
-        20.5.0)
-            prodkeys_url="https://files.prodkeys.net/ProdKeys.NET-v20.5.0.zip"
-            firmware_url="https://github.com/THZoria/NX_Firmware/releases/download/20.5.0/Firmware.20.5.0.zip"
-            prodkeys_file="ProdKeys.NET-v20.5.0.zip"
-            firmware_file="Firmware.20.5.0.zip"
-            ;;
+        # 19.0.1)
+        #     prodkeys_url="https://files.prodkeys.net/ProdKeys.net-v19.0.1.zip"
+        #     firmware_url="https://github.com/THZoria/NX_Firmware/releases/download/19.0.1/Firmware.19.0.1.zip"
+        #     prodkeys_file="ProdKeys.net-v19.0.1.zip"
+        #     firmware_file="Firmware.19.0.1.zip"
+        #     ;;
+        # 20.5.0)
+        #     prodkeys_url="https://files.prodkeys.net/ProdKeys.NET-v20.5.0.zip"
+        #     firmware_url="https://github.com/THZoria/NX_Firmware/releases/download/20.5.0/Firmware.20.5.0.zip"
+        #     prodkeys_file="ProdKeys.NET-v20.5.0.zip"
+        #     firmware_file="Firmware.20.5.0.zip"
+        #     ;;
         21.0.0)
             prodkeys_url="https://files.prodkeys.net/Prodkeys.NET_v21-0-0.zip"
             firmware_url="https://github.com/THZoria/NX_Firmware/releases/download/21.0.0/Firmware.21.0.0.zip"
