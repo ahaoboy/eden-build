@@ -4,6 +4,8 @@ https://darthsternie.net/switch-firmwares/
 
 https://prodkeys.net/yuzu-prod-keys-n4/
 
-https://github.com/Ryubing/Stable-Releases
+<!-- 404 -->
+<!-- https://github.com/Ryubing/Stable-Releases -->
 
-https://github.com/eden-emulator/Releases
+<!-- DMCA  -->
+<!-- https://github.com/eden-emulator/Releases -->
