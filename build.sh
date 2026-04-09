@@ -44,25 +44,38 @@ for version in "${VERSIONS[@]}"; do
 done
 
 # Fetch the latest tag from GitHub API
-tagsUrl="https://api.github.com/repos/$owner/$repo/tags"
-allTags=$(curl -s -H "User-Agent: Bash" "$tagsUrl")
-latestTag=$(echo "$allTags" | jq -r '.[0].name')
-echo "latest tag: $latestTag"
-Define filename and construct download URL
-filename="Eden-Windows-$latestTag-amd64-msvc-standard.zip"
-downloadUrl="https://github.com/$owner/$repo/releases/download/$latestTag/$filename"
-echo "download $downloadUrl"
-
-# Fetch the latest tag from eden API
-# tagsUrl="https://git.eden.app/api/v4/projects/ryubing%2Feden/releases"
+# tagsUrl="https://api.github.com/repos/$owner/$repo/tags"
 # allTags=$(curl -s -H "User-Agent: Bash" "$tagsUrl")
-# latestTag=$(echo "$allTags" | jq -r '.[0].tag_name')
+# latestTag=$(echo "$allTags" | jq -r '.[0].name')
 # echo "latest tag: $latestTag"
-
 # Define filename and construct download URL
 # filename="Eden-Windows-$latestTag-amd64-msvc-standard.zip"
-# downloadUrl="https://git.eden.app/api/v4/projects/1/packages/generic/Ryubing/$latestTag/$filename"
+# downloadUrl="https://github.com/$owner/$repo/releases/download/$latestTag/$filename"
 # echo "download $downloadUrl"
+# allTags=$(curl -s -H "User-Agent: Bash" "$tagsUrl")
+# latestTag=$(echo "$allTags" | jq -r '.[0].name')
+# echo "latest tag: $latestTag"
+# Define filename and construct download URL
+# filename="Eden-Windows-$latestTag-amd64-msvc-standard.zip"
+# downloadUrl="https://github.com/$owner/$repo/releases/download/$latestTag/$filename"
+# echo "download $downloadUrl"
+
+# Fetch the latest tag from eden API
+API_URL="https://git.eden-emu.dev/api/v1/repos/eden-emu/eden/releases/latest"
+response=$(curl -s "$API_URL" -H "User-Agent: Bash")
+latestTag=$(echo "$response" | sed -n 's/.*"tag_name":"\([^"]*\)".*/\1/p')
+
+if [ -z "$latestTag" ]; then
+    echo "Error: Failed to fetch the latest tag from the API."
+    exit 1
+fi
+
+echo "latest tag: $latestTag"
+
+# Define filename and construct download URL
+filename="Eden-Windows-${latestTag}-amd64-msvc-standard.zip"
+downloadUrl="https://git.eden-emu.dev/eden-emu/eden/releases/download/${latestTag}/${filename}"
+echo "download $downloadUrl"
 
 # Download the file
 curl -L -o "$filename" "$downloadUrl"
